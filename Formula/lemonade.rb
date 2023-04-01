@@ -9,17 +9,17 @@ class Lemonade < Formula
   version "1.1.3-cnt0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_arm64.tar.gz"
-      sha256 "5abfbf6e9c20b2d9b4b9bb70a242365182453a96421a19f38600636d3cb7b18e"
+    if Hardware::CPU.intel?
+      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_x86_64.tar.gz"
+      sha256 "87ce59101675afae62fa798c008e231310244deed5c6f5af9a67da1c7275330a"
 
       def install
         bin.install "lemonade"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_x86_64.tar.gz"
-      sha256 "da7ef8ba61993d2b457b63b8264b860ef7177e80a059ed18656e87c368041da7"
+    if Hardware::CPU.arm?
+      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_arm64.tar.gz"
+      sha256 "78949ad8550d5164ba8248316919689fe7799d6a36998d7b521542a253b1f8bc"
 
       def install
         bin.install "lemonade"
@@ -28,17 +28,17 @@ class Lemonade < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_arm64.tar.gz"
-      sha256 "1e2d90492c65d61bda5d2b26202f58504bdab7ed3bcaa304313413bf3ab6093e"
+    if Hardware::CPU.intel?
+      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_x86_64.tar.gz"
+      sha256 "e79dd94dc99c1dab839f2e50b30d84311257b5e8e690df839fa760d051f7c2fe"
 
       def install
         bin.install "lemonade"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_x86_64.tar.gz"
-      sha256 "0daa5de49fa449779b2e9678600de15ec7ece24e5fea9130e044401a5d1fe9cf"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_arm64.tar.gz"
+      sha256 "3a455f3f19c2577b931922ae4f34ca4a56c2a71ec0cb3e283fd6f6fab303fd64"
 
       def install
         bin.install "lemonade"
@@ -47,6 +47,9 @@ class Lemonade < Formula
   end
 
   service do
-    run: [bin/"lemonade", "server"]
+    run [bin/"lemonade", "server"]
+    keep_alive true
+    log_path var/"log/lemonade.log"
+    error_log_path var/"log/lemonade.log"
   end
 end
