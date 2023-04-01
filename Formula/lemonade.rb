@@ -11,7 +11,7 @@ class Lemonade < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_x86_64.tar.gz"
-      sha256 "87ce59101675afae62fa798c008e231310244deed5c6f5af9a67da1c7275330a"
+      sha256 "7a74b1a8effb2df4bca0f192fba3565ebde6a3fa575dd150efb63dff4fdcf58c"
 
       def install
         bin.install "lemonade"
@@ -19,7 +19,7 @@ class Lemonade < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Darwin_arm64.tar.gz"
-      sha256 "78949ad8550d5164ba8248316919689fe7799d6a36998d7b521542a253b1f8bc"
+      sha256 "3b698627a9374f75e1e32622b72063a6c3ec20465cc4afeccac9fabd05181838"
 
       def install
         bin.install "lemonade"
@@ -30,7 +30,7 @@ class Lemonade < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_x86_64.tar.gz"
-      sha256 "e79dd94dc99c1dab839f2e50b30d84311257b5e8e690df839fa760d051f7c2fe"
+      sha256 "24ca954643f39f48213a0e18b308c3f2e8df38b763c617db7821ec889347ebcf"
 
       def install
         bin.install "lemonade"
@@ -38,7 +38,7 @@ class Lemonade < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/cnt0/lemonade/releases/download/v1.1.3-cnt0/lemonade_Linux_arm64.tar.gz"
-      sha256 "3a455f3f19c2577b931922ae4f34ca4a56c2a71ec0cb3e283fd6f6fab303fd64"
+      sha256 "eb1f7fd38e85ed76d304e6fabce331060864611f82f8201767b0c8118a4586cb"
 
       def install
         bin.install "lemonade"
